@@ -34,3 +34,33 @@ section.hero {
   border-color: white;
   color: white;
 }
+
+.btn-primary {
+  background: #FE5F1E;
+  transition: all 3ms ease-in-out;
+}
+.btn-primary:hover {
+  background-color: #b23301;
+}
+
+sections.cart {
+  background: #F8F8F8;
+}
+sections.cart .amount {
+  color: #FE5F1E;
+}
+
+section.login {
+  background: #F8F8F8;
+  min-height: calc(100vh - 86px);
+}
+section.login a {
+  color: #FE5F1E;
+}
+section.login a:hover {
+  color: #b23301;
+}
+
+.order {
+  width: 50%;
+}

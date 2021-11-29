@@ -4,7 +4,6 @@ body{
     font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiazed;
     color: $dark;
-    height: 4000px;
 }
 nav li:last-child a {
     background: $primary;
@@ -32,4 +31,30 @@ section.hero {
         border-color: $pure;
         color: $pure;
     }
+}
+.btn-primary {
+    background: $primary;
+    transition: $smooth;
+    &:hover {
+        background-color: $primary-hover;
+    }
+}
+sections.cart {
+    background: $secondary;
+    .amount {
+        color:$primary; 
+    }
+}
+section.login {
+    background: $secondary;
+    min-height: calc(100vh - 86px);
+    a{
+        color: $primary;
+        &:hover{
+            color:$primary-hover
+        }
+    }
+}
+.order {
+    width: 50%;
 }
