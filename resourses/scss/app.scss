@@ -1,4 +1,6 @@
 @import './variables';
+@import '~noty/src/noty.scss';
+@import '~noty/src/themes/mint.scss';
 
 body{
     font-family: 'Lato', sans-serif;
@@ -32,14 +34,14 @@ section.hero {
         color: $pure;
     }
 }
-.btn-primary {
+.btn-prim {
     background: $primary;
     transition: $smooth;
     &:hover {
         background-color: $primary-hover;
     }
 }
-sections.cart {
+section.cart {
     background: $secondary;
     .amount {
         color:$primary; 
@@ -57,4 +59,9 @@ section.login {
 }
 .order {
     width: 50%;
+}
+
+.noty_theme_mint {
+    border-radius: 50px!important;
+    padding-left: 8px!important;
 }
