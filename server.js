@@ -9,7 +9,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const flash = require('express-flash')
 const MongoStore = require('connect-mongo')
-
+const passport = require('passport')
 
 //database connection 
 const url = 'mongodb://localhost:27017/pizza';
@@ -22,29 +22,38 @@ const connection = mongoose.connection;
 // //     console.log('connection failed.....')
 // // })
 
-
-//session store
-let mongoStore = MongoStore.create(({
-    mongoUrl: url,
-    collection: 'sessions'
-}))
+//passport config 
 //session config
+//session store
+
 app.use(session({
     secret: process.env.COOKIE_SECRET,
     resave: false,
-    store: mongoStore,
+    store:  MongoStore.create(({
+        mongoUrl: url,
+        collection: 'sessions'
+    })),
+    saveUninitialized: false,
     cookie: {maxAge: 1000 * 60 * 60 * 24}
     // cookie: {maxAge: 1000 * 15}
 }))
 
+const passportInit = require('./app/config/passport')
+passportInit(passport)
+app.use(passport.initialize())
+app.use(passport.session())
 app.use(flash())
+
+
 //Assets
 app.use(express.static(path.join(__dirname, 'public')))
+app.use(express.urlencoded(extended= true))
 app.use(express.json())
 
 //Global middleware
 app.use((req, res, next) => {
     res.locals.session = req.session
+    res.locals.user = req.user
     next()
 })
 //set template engine
