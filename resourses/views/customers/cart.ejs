@@ -24,18 +24,22 @@
         <div class="text-right py-4">
             <div>
                 <span class="text-lg font-bold">Total Ammount</span>
-                <span class="ammount text-2xl font-bold ml-2"><%= session.cart.totalPrice %> </span>
+                <span class="ammount text-2xl font-bold ml-2 py-4"><%= session.cart.totalPrice %> </span>
             </div>
+            <% if(user) { %> 
             <div>
-                <form action="" class="mt-12">
-                    <input class="border border-gray-400 p-2 w-1/2 mb-2" type="text" placeholder="Phone Number">
-                    <input class="border border-gray-400 p-2 w-1/2 mt-2 mb-2" type="text" placeholder="Address">
-                    <!-- <div>
-                        <button class="btn-primary  px-6 py-2 rounded-full  text-white font-bold mt-6">Order Now</button>
-                    </div> -->
+                <form action="/orders" method="post" class="mt-12">
+                    <input name="phone" class="border border-gray-400 p-2 w-1/2 mb-2" type="text" placeholder="Phone Number">
+                    <input name="address" class="border border-gray-400 p-2 w-1/2 mt-2 mb-2" type="text" placeholder="Address">
+                    <div>
+                        <button class="btn-prim  px-6 py-2 rounded-full  text-white font-bold mt-6">Order Now</button>
+                    </div>
                 </form>
             </div>
-            <a href="" class="inline-block cursor-pointer btn-primary rounded-full px-6 py-2 text-white font-bold">Log in to Continue</a>
+            <% } else { %> 
+            <a href="/login" class="inline-block cursor-pointer 
+                btn-prim rounded-full px-6 py-2 text-white font-bold">Log in to Continue</a>
+            <% } %> 
         </div>
     </div>
     <% } else { %> 

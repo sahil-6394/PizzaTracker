@@ -4,6 +4,9 @@ const passport = require('passport')
 
 function authController() {
 
+    const _getRedirectUrl = (req) => {
+        return req.user.role === 'admin' ? '/admin/orders' : '/customer/orders'
+    }
     return {
         login(req, res) {
             res.render('auth/login')
@@ -13,10 +16,6 @@ function authController() {
             //validet request
             if(!email || !password) {
                 req.flash('error','All fields are required')
-
-                //if user fill two fields and click on submit button then error message is shown but all input which is provided by 
-                //user is gone ex. if user fill name with sahil and email with abc@mail.com and click on submit button these two 
-                //input should be there whenever user makes mistake therefore here flash messages is used
                 return res.redirect('/login')
             }
             passport.authenticate('local', (err, user, info) => {
@@ -35,8 +34,8 @@ function authController() {
                         req.flash('error', info.message)
                         return next(err)
                     }
-
-                    return res.redirect('/')
+                    
+                    return res.redirect(_getRedirectUrl(req))
                 })
             })(req, res, next)
         },
