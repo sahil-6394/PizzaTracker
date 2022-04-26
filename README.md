@@ -12,3 +12,7 @@ order pizza
 Tracking pizza order
 view previous order
 
+Screen Shots of Wep Applications in given below
+![image](https://user-images.githubusercontent.com/84676864/165342198-24e05ed6-fa87-4a73-bdaf-8e6712658319.png)
+
+
